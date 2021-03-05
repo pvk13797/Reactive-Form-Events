@@ -1,0 +1,36 @@
+<h1>{{ title | uppercase }}</h1>
+
+<form class="screen" [formGroup]="eventForm">
+
+    <div class="row" formArrayName="events">
+
+        <div *ngFor="let event of events.controls; let i = index;">
+
+            <label class="form-label">
+                Event Name:
+                <input type="text" class="form-control" [formControlName]="i">
+            </label>
+
+            <label class="form-label">
+                Event Description:
+                <input type="text" class="form-control" [formControlName]="i">
+            </label>
+
+            <label class="form-label">
+                Event Start:
+                <input type="text" class="form-control" [formControlName]="i">
+            </label>
+
+            <label class="form-label">
+                Event End:
+                <input type="text" class="form-control" [formControlName]="i">
+            </label>
+
+            <i href="javascript(0).void;" class="bi bi-trash" *ngIf="events.controls.length > 1" (click)="deleteEvents(i)"></i>
+        </div>
+
+    </div>
+
+    <button class="bi bi-plus" (click)="addEvents()"></button>
+
+</form>
